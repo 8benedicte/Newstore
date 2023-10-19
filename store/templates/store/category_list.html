@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+    {% load i18n %}
+
+{% block content %}
+
+
+    {% if category_id == category_id %}
+    <div class='collection' >
+        {% for categorie in category  %}
+        <div class='coll-title' style=" padding: 10px; text-align: right;position: absolute;left: 50%;transform: translate(-50%, -50%);color:black;font-size: 0.5cm; padding-top:5em;"> 
+            <h1 >Catégorie {{ categorie.name }}</h1>   
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+              </button>
+              <ul class="dropdown-menu">
+                {% for category_ in category_on_id %} 
+
+                {% for subcategori in category_.subcategory %}
+                    <li style='color: #000000; list-style: none; display:block;'>
+                        <a class="dropdown-item" href="{% url 'subcategory' subcategori.id %}" style="text-decoration:none">{{subcategori.name}}</a>
+                    </li> 
+                {% endfor %} 
+                {% endfor %}               
+              </ul>
+
+
+        </div> 
+        {% endfor %}
+    </div>
+
+        <div class='coll-pro'>
+                {% for category_ in category_on_id %} 
+
+                  {% for product in category_.products %}  
+                    <ul>
+                        <li> <a href=" {% url 'product' product.slug %}">
+                            <img src=" {{ product.thumbnail.url }} " alt="{{ product.name }}" style="max-width: 250px; height:200px" >
+                        </a>
+                        </li>
+             
+                        <li>
+                            {{ product.name }} ({{ product.prices }}) Cfa
+                        </li>              
+                        <li>
+                            <a href=" {% url 'product' product.slug %} "> Voir plus</a>
+                        </li>
+
+                    </ul>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+    {% else %}
+    <p>fuck them kids</p>
+{% endif %}
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+

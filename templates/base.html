@@ -1,0 +1,132 @@
+
+<html lang="fr">
+  <head>
+    {% load static %}
+    {% load i18n %}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% block title %}
+      <title>la boutique cbon</title>
+    {% endblock %}
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="http://example.com/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Montserrat:wght@200&family=Open+Sans:wght@300&family=Playfair+Display:ital@1&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+      <!-- Add additional CSS in static file -->
+    <link rel="stylesheet"  href="{% static 'store/css/style.css' %}" type="text/css" />
+    <script src="https://kit.fontawesome.com/fe9fe601dc.js" crossorigin="anonymous"></script>
+      <!-- Add additional JS in static file -->
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">        
+          <div class="col-sm-2">
+            {% block sidebar %}
+            <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" style=""></h1>
+            <input type="checkbox" id='check'>
+            <label for="check" class="icons">
+                <i class="fa-solid fa-bars "  id="menu"></i>
+                <i class="fa fa-times" aria-hidden="true"  id="close"></i>
+            </label>
+            <ul class="sidebar-nav">
+                <li><a href="{% url 'index' %}" >Home</a></li>
+                <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}">{% trans "Produits" %}</a>
+                    <div class="sub-menu"  class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'category_list' 1 %}" >{% trans "Electroniques" %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category_list' 3 %}" >{% trans "Alimentation" %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category_list' 4 %}" >{% trans "Education" %}</a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li ><a href="{% url 'pack_list' %}">{% trans "Nos packs" %}</a></li>
+                <li ><a href="{% url 'about' %}">{% trans "A Propos" %}</a></li>
+              {% if user.is_authenticated %}
+                  <!--do something for authenticated user-->
+                  <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
+                  <li><a href=" {% url 'cart' %} ">{% trans "panier" %}<i class="fa-solid fa-basket-shopping"></i></a></li>
+                      {% else %} 
+                  <!--do something for anonymous user-->
+                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a></li>
+                      <li class="last"><a href=" {% url 'login' %} ">Login</a></li>
+              {% endif %}
+              </ul>
+            {% endblock %}
+          </div>
+     </div>
+    </div>
+     <div class="col-sm-10 ">{% block content %}
+        {% endblock %}</div>
+ 
+     </body>
+
+
+<foot>
+  <div class="footbar">
+    <div class="adresse">
+      <div class='column'>
+        <section class="column_1">
+          <h1 > <img src="{% static 'store/image/aaa.png' %} " alt="logo" ></h1>
+          {% get_current_language as LANGUAGE_CODE %}
+          <h1> {{LANGUAGE_CODE}} </h1>
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <select name="language" class="form-select" id="inputGroupSelect01">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go" class="btn btn-primary"/>
+        </form>
+         </section>
+         
+         <section class="column_">
+          <div class="txt" >
+            <a href="" data-replace="instagram"><i class="fa-brands fa-instagram" class="yogurt"style='colors: #000000'></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100066920756216" data-replace="facebook"><i class="fa-brands fa-facebook"class="yogurt"style='colors: #000000'></i></a>
+            <a href="https://vm.tiktok.com/ZMjPkbYjo/" data-replace="tiktok"style='colors: #000000'><i class="fa-brands fa-tiktok"class="yogurt"></i></a>
+            <a href="https://maps.app.goo.gl/vdjLA1tCev3GqLVt6" data-replace="Maps"style='colors: #000000'><i class="fa-solid fa-location-dot"class="yogurt"></i></a>
+          </div>
+        </section>
+        <section class="column_2" >
+          <div>
+            <h1>{% trans "Nous contacter" %}</h1>
+          </div>
+          <div>
+            <p>{% trans "Contactez-nous par mail:" %}
+            </br>  eshopcbon@gmail.com</p>
+            <p>{% trans "par whatsapp:" %} </br>
+            <a href="https://api.whatsapp.com/send?phone=22893061107" ><i class="fa-brands fa-square-whatsapp" style="color: #000000;font-size: 1.8em"></i>    +228 93061107</a> </p>
+          </div>
+      </section>
+      <section class="column_3">
+        <div>
+          <h1>{% trans "liens" %}</h1>
+            <a href="https://pagelink.gozem.co/zxo8" style='color: #000000'>Gozem</a>            
+        </div></br>
+        <a href="{% url "about" %}" style='color: #000000'> {% trans "Aide " %}</a>
+      </section>
+        </div>
+      </div>
+    </div>
+  </foot>
+</html>
+
+
+
+
+
