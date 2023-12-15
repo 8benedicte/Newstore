@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+    {% load i18n %}
+
+{% block content %}
+
+<div class="pack_page">
+    <div class="talk2">
+        <h1 style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:#000000;font-size: 1cm;">Nos offres en cours </h1>
+    </div>
+    <div class="card" style="width:100vw; display: flex;">
+        <div class="card-body">
+             <div class="pack_liist" style="display: flex; width: 18rem;">
+                {% for packs in product_pack  %}
+                <ul>
+                    <li>
+                        <h5> {{ packs.name }}</h5>
+                        <p > {{ packs.prices }} </p>
+                        <p class="card-text"> {{ packs.product.name }}</p>
+                    </li>
+                    <a  class="btn btn-primary" href=" {% url 'pack_list_detail' packs.id %}" > {% trans "Voir plus" %}</a>
+                    </ul>
+                {% endfor %}
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+

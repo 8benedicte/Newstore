@@ -1,0 +1,73 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    
+<div class="container-part">
+   <div class="slider">
+      <div class="slide" >
+
+      </div>
+      <div class="slide">
+  
+      </div>
+      <div class="slide">
+      </div>
+      <div class="slide">
+
+      </div>
+      <div class="slide">
+
+      </div>
+   </div>
+      </div> 
+    <div class= "part-two" >
+
+      <ul class=" responsive-part-two">
+         {% for category_product in category_products %}
+            <li> 
+               {% for product in  category_product.products %}
+
+                  <div class="card" style="width: 18rem; margin: 1rem">
+                     <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 270px;">
+                     <div class="card-body" >
+                       <h5 class="card-title">{{ category_product.category.name }}</h5>
+                       <p class="card-text">{{product.category.name}}</p>
+                       <a href="#" class="btn btn-primary">{{product.name}}</a>
+                     </div>
+                   </div>
+                     {% endfor %}
+            </li> 
+         {% endfor %}  
+      </ul>
+ </div>
+<div class="text-center" style="background-color:#023e8a; color: white; width: 100vw; height: 40vh;
+padding-top: 7vw; list-style:none; text-decoration: none;
+" >
+
+   <h2 class="text-center" style="color: white;">{% trans "Découvrez nos packs produits :" %}
+      <a style="text-decoration: none;color: white;" href="{% url 'category_list' 1 %}" >{% trans "Electronics" %}</a>,
+      <a style="text-decoration: none;color: white;"  href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>,
+      <a href="{% url 'category_list' 3 %}" style="text-decoration: none;color: white;" >{% trans "Alimentation" %}</a>,
+      <a href="{% url 'category_list' 4 %}" style="text-decoration: none;color: white;" >{% trans "Education" %}</a>
+   </br>    
+   <button type="button" class="btn btn-secondary" style="font-size: 2rem; background-color :#0077b6; border-style:none">
+      <a style="text-decoration: none;color: white;" href="{% url 'pack_list' %}">{% trans "je découvre" %}</a> 
+   </button> 
+</h2>
+
+</div>
+
+{% endblock  %} 
+<!--
+  <div class='one'>
+   {% for category in categorys %}
+      <li class= 'list-group-item'>
+      <a href=""></a>
+      </li>
+   {% endfor %} 
+</div>
+
+
+-->
