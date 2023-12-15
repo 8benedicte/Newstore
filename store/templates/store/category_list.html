@@ -33,7 +33,7 @@
 
                   {% for product in category_.products %}  
                     <ul>
-                        <li> <a href=" {% url 'product' product.slug %}">
+                        <li> <a href=" {% url 'product' %}">
                             <img src=" {{ product.thumbnail.url }} " alt="{{ product.name }}" style="max-width: 250px; height:200px" >
                         </a>
                         </li>
@@ -42,7 +42,7 @@
                             {{ product.name }} ({{ product.prices }}) Cfa
                         </li>              
                         <li>
-                            <a href=" {% url 'product' product.slug %} "> Voir plus</a>
+                            <a href=" {% url 'product' %} "> Voir plus</a>
                         </li>
 
                     </ul>
