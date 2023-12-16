@@ -33,7 +33,7 @@ def signup(request):
     else:
         form= SignUpForm()
         
-    return render(request,'docs/signup.html',{'form':form})
+    return render(request,'account/signup.html',{'form':form})
 
 
 #reconnexion
@@ -48,7 +48,7 @@ def login_user(request):
                 login(request, user )
                 return redirect(_('index'))
 
-    return render(request, 'docs/login.html') 
+    return render(request, 'account/login.html') 
        
 #deconexion
 def logout_user(request):
@@ -71,7 +71,7 @@ def add_to_cart(request,slug):
     return redirect( _(reverse( "product", kwargs= {"slug": slug} )))
 #afficher un message pour panier vide
 def empty_cart(request):
-    return render (_(request, 'docs/empty_cart.html'))
+    return render (_(request, 'store/empty_cart.html'))
 
 #afficher le contenue du panier
 def cart(request):

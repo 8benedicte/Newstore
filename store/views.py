@@ -30,21 +30,21 @@ def index (request):
             }
 
     
-    return render (request, "docs/index.html",context)
+    return render (request, "store/index.html",context)
 
 def product_detail(request,slug):
         products = get_object_or_404(product, slug=slug ) 
         context={"product":products}
-        return render (request, "docs/detail.html",context ) 
+        return render (request, "store/detail.html",context ) 
 
 def packproductindex(request):
         product_pack = ProductPack.objects.all() 
         context={"product_pack":product_pack}
-        return render (request, "docs/pack_list.html",context ) 
+        return render (request, "store/pack_list.html",context ) 
 
 class ProductListView(generic.ListView):
     model = product 
-    template_name = 'docs/product_list.html'
+    template_name = 'store/product_list.html'
     context= {'products':product}
     
     def get_context_data(self, **kwargs):
@@ -61,12 +61,12 @@ class ProductListView(generic.ListView):
 #the aboutus page function 
 def about_us(request):
 
-    return render(request,"docs/about.html") 
+    return render(request,"store/about.html") 
    
 class  CategoryListviews(generic.ListView):
     model=Category
     context_object_name='category'
-    template_name='docs/category_list'
+    template_name='store/category_list'
 
     def get_queryset(self):
         return Category.objects.filter(id=self.kwargs['id'])
@@ -116,7 +116,7 @@ class  SubCategoryListviews(generic.ListView):
         
 class  ProductPackListviews(generic.ListView):
         model=ProductPack
-        template_name= "docs/pack_list_detail.html"
+        template_name= "store/pack_list_detail.html"
         context= { 'product_pack':ProductPack }
    
             
