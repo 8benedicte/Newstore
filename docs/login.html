@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+ {% block content %}
+ <div class='talk' >
+   <div class='firsto'></div>
+   <div class= 'twoo' style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:black; padding:10px">
+    <h1>Connexion</h1>
+    <form method="POST">
+         {% csrf_token %}
+         <p>
+            <label for="username">Nom d'utilisateur</label>
+            <input id="username" type="text" name="username">
+         </p>
+         <p>
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" name="password">
+      
+         </p> 
+         <button type="submit">Connexion</button>
+    </form>
+   </div>
+</div>
+</div>
+ {% endblock content %}
+ 
+ 
