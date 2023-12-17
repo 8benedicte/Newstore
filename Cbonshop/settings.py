@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'store',
     'accounts',
     'locale',
+    'gunicorn',
     'currencies',
     'bootstrap5',
     
