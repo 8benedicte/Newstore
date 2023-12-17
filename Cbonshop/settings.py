@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'locale',
     'currencies',
     'bootstrap5',
-    'app',
+    
 
 ]
 
