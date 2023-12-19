@@ -24,7 +24,14 @@ text-decoration: none;' >
  
             {% for product in category_product.products %}  
               <li>
-                <a style="text-decoration: none;"  href=" {% url 'product' product.slug %} "> <img src=" {{ product.thumbnail.url }} " alt="{{ product.name }}" style="max-width: 10em" ></a>
+                <a style="text-decoration: none;"  href=" {% url 'product' product.slug %} ">
+                  {% if product.thumbnail %}
+                  <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 250px; height:200px">
+                {% else %}
+                  <img src="static\store\image\bluebookhome.jpg" alt="Default Image" style="max-width: 250px; height:200px">
+                  <!-- Replace 'path_to_default_image' with the path to your default image -->
+                {% endif %}
+                </a>
                   <a style="text-decoration: none;"  href=" {% url 'product' product.slug %} "> <h5> {{ product.name }} </h5> </a>
                     <a style="text-decoration: none;"  href=" {% url 'product' product.slug %} "> <h5>  ({{ product.prices }}) </h5></a>
                     <h5 >Category {{ category_product.category.name }}</h5>  

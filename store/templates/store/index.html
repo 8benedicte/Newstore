@@ -24,7 +24,7 @@
       </div> 
     <div class= "part-two" >
 
-      <ul class=" responsive-part-two">
+      <ul class="responsive-part-two">
          {% for category_product in category_products %}
             <li> 
                {% for product in  category_product.products %}
@@ -34,7 +34,7 @@
                      <div class="card-body" >
                        <h5 class="card-title">{{ category_product.category.name }}</h5>
                        <p class="card-text">{{product.category.name}}</p>
-                       <a href="#" class="btn btn-primary">{{product.name}}</a>
+                       <a href="{% url "category_list"  product.category.id%}" class="btn btn-primary">{{product.name}}</a>
                      </div>
                    </div>
                      {% endfor %}

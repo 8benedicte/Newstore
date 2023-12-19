@@ -71,25 +71,26 @@ class  CategoryListviews(generic.ListView):
     def get_queryset(self):
         return Category.objects.filter(id=self.kwargs['id'])
 
-    def get_context_data(self, **kwargs) :
-        #Recupere le context depuis la superclass
-        context= super(CategoryListviews,self).get_context_data(**kwargs)
-    
-       #Rajouter la liste de category
-        categories = Category.objects.filter(id=self.kwargs['id'])
-        category_id= self.kwargs['id']
-        context['categories']= Category.objects.filter(id=self.kwargs['id'])
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListviews, self).get_context_data(**kwargs)
+
+        # Get the current category
+        current_category = Category.objects.get(id=self.kwargs['id'])
+
+        # Retrieve all products related to the current category
+        category_products = product.objects.filter(category=current_category)
+        subcategories = SubCategory.objects.filter(category=current_category)
+
+        context['categories'] = Category.objects.filter(id=self.kwargs['id'])
         context['category_id'] = self.kwargs['id']
-        category_on_id = []
- 
-        for category in categories:
-            products = product.objects.filter(category_id=category_id)
-            subcategory = SubCategory.objects.filter(category_id=category_id)
-            #pour pouvoir acceder directement au noms des subcategory child de a=ma category_id
-            category_on_id.append({ 'category': category, 'products': products , "subcategory":subcategory })
-        context['category_on_id'] = category_on_id
+        
+        # Include the current category, its products, and subcategories in the context
+        context['category_on_id'] = [{
+            'category': current_category,
+            'products': category_products,
+            'subcategory': subcategories
+        }]
         return context
-    
 #creer un template pour les sub category
 class  SubCategoryListviews(generic.ListView):
        model= SubCategory

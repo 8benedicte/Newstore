@@ -74,7 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
                 'accounts.context_processors.user_context',
-
+                # Add other context processors if needed
             ],
         },
     },
