@@ -44,7 +44,7 @@ class product (models.Model):
     prices= models.FloatField(default=0)
     instock = models.IntegerField(default=0)
     description = models.TextField(blank=True)
-    thumbnail = models.ImageField(upload_to ="products",blank=True ,null=True)
+    thumbnail = models.ImageField(upload_to ="product",blank=True ,null=True)
     def __str__(self) -> str:
         return self.name
 

@@ -33,8 +33,13 @@
 
                   {% for product in category_.products %}  
                     <ul>
-                        <li> <a href=" {% url 'product' %}">
-                            <img src=" {{ product.thumbnail.url }} " alt="{{ product.name }}" style="max-width: 250px; height:200px" >
+                        <li> <a href=" {% url 'product' product.slug %}">
+                            {% if product.thumbnail %}
+                            <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 250px; height:200px">
+                          {% else %}
+                            <img src="static\store\image\bluebookhome.jpg" alt="Default Image" style="max-width: 250px; height:200px">
+                            <!-- Replace 'path_to_default_image' with the path to your default image -->
+                          {% endif %}
                         </a>
                         </li>
              
@@ -42,7 +47,7 @@
                             {{ product.name }} ({{ product.prices }}) Cfa
                         </li>              
                         <li>
-                            <a href=" {% url 'product' %} "> Voir plus</a>
+                            <a href=" {% url 'product' product.slug %} "> Voir plus</a>
                         </li>
 
                     </ul>

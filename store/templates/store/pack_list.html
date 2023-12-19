@@ -17,7 +17,7 @@
                         <p > {{ packs.prices }} </p>
                         <p class="card-text"> {{ packs.product.name }}</p>
                     </li>
-                    <a  class="btn btn-primary" href=" {% url 'pack_list_detail' packs.id %}" > {% trans "Voir plus" %}</a>
+                    <a  class="btn btn-primary" href=" {% url 'pack_list_detail' packs.id    %}" > {% trans "Voir plus" %}</a>
                     </ul>
                 {% endfor %}
         </div>
