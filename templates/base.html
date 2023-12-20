@@ -6,7 +6,6 @@
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-
     {% block title %}
       <title>la boutique cbon</title>
     {% endblock %}
@@ -53,7 +52,7 @@
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
-                  <li><a href=" {% url 'cart' %} ">{% trans "panier" %}<i class="fa-solid fa-basket-shopping"></i></a></li>
+                  <li><a href=" {% url 'cart' %} ">{% trans "Panier" %}</a></li>
                       {% else %} 
                   <!--do something for anonymous user-->
                       <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a></li>
@@ -64,8 +63,8 @@
           </div>
      </div>
     </div>
-     <div class="col-sm-10 ">{% block content %}
-        {% endblock %}</div>
+     {% block content %}
+        {% endblock %}
  
      </body>
 
@@ -79,7 +78,7 @@
           {% get_current_language as LANGUAGE_CODE %}
           <h1> {{LANGUAGE_CODE}} </h1>
           <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <input name="next" type="hidden" value="{{ redirect_to }}" / >
             <select name="language" class="form-select" id="inputGroupSelect01">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
@@ -96,7 +95,7 @@
          
          <section class="column_">
           <div class="txt" >
-            <a href="" data-replace="instagram"><i class="fa-brands fa-instagram" class="yogurt"style='colors: #000000'></i></a>
+            <a href="" data-replace="instagram" data-bs-toggle="modal" data-bs-target="#customModal"><i class="fa-brands fa-instagram" class="yogurt"style='colors: #000000'></i></a>
             <a href="https://www.facebook.com/profile.php?id=100066920756216" data-replace="facebook"><i class="fa-brands fa-facebook"class="yogurt"style='colors: #000000'></i></a>
             <a href="https://vm.tiktok.com/ZMjPkbYjo/" data-replace="tiktok"style='colors: #000000'><i class="fa-brands fa-tiktok"class="yogurt"></i></a>
             <a href="https://maps.app.goo.gl/vdjLA1tCev3GqLVt6" data-replace="Maps"style='colors: #000000'><i class="fa-solid fa-location-dot"class="yogurt"></i></a>
@@ -127,6 +126,17 @@
 </html>
 
 
-
+<!-- and at the end:-->
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% if messages %}
+  <script>
+      {% for message in messages %}
+          $(document).ready(function () {
+              $('.toast').toast('show');
+          });
+      {% endfor %}
+  </script>
+{% endif %}
 
 

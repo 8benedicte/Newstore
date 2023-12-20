@@ -112,7 +112,7 @@ body{
 
 
 .col-sm-2 li a {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 200;
   text-decoration: none;
   list-style: none;
@@ -156,7 +156,9 @@ body{
       }  
 }
 @media  (max-width : 700px) {
-
+  .col-sm-2{
+    width: 20rem;
+  }
   .icons{
       display: inline-flex;
     }
@@ -169,6 +171,7 @@ body{
     #check:checked~.icons #close {
       display: block;
     }
+
     .col-sm-2 ul{
       display: block;
       top: 100%;
@@ -241,44 +244,10 @@ ul{
   backdrop-filter: blur(0.5px);
 
 }
-.slider .slide:nth-child(1) {
-  background-image: url("/static/store/image/christine.jpg");
+.slider .slide {
+  background-image: url("/static/store/image/stem.jpg");
   animation-delay: 0;
 }
-
-.slider .slide:nth-child(2) {
-  background-image: url("/static/store/image/clavierblue.jpg");
-  animation-delay: -6s;
-}
-
-.slider .slide:nth-child(3) {
-  background-image: url("/static/store/image/skinblue.jpg");
-  animation-delay: -12s;
-}
-
-.slider .slide:nth-child(4) {
-  background-image: url("/static/store/image/coffe2.jpg");
-  animation-delay: -18s;
-}
-
-.slider .slide:nth-child(5) {
-  background-image: url("/static/store/image/mini.jpg");
-  animation-delay: -24s;
-}
-@keyframes slide {
-  0%, 15%, 100% {
-    transform: translateX(0);
-    animation-timing-function: ease;
-  }
-  20% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-  95% {
-    transform: translateX(100%);
-    animation-timing-function: ease;
-  }
- }
 
  .part-two {
   display: block;
@@ -438,7 +407,7 @@ ul{
   height: 100vh;
   position: relative;
   z-index: 1;
- }
+}
 .coll-title{
   border-bottom:1px black solid;
   display: block;
@@ -462,6 +431,7 @@ ul{
   text-decoration: none;
 
 }
+
 .col_sm_3 ul li:hover{
   transform: scale(1.2);
 }
@@ -686,6 +656,9 @@ section h1{
     height: fit-content;
     justify-content: center;
   }
+  .column form{
+    width:110px;
+}
   .column_ {
 
     padding-left:20px;
@@ -728,6 +701,25 @@ section h1{
   text-decoration: none;
   transform: translate3d(0, 200%, 0);
 }
+.col_sm_2{
+  margin-top: 15%;
+}
 
 } 
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  /* Add other styles as needed */
+}
 
+/* Media query for max-width 700px */
+@media (max-width: 700px) {
+  .col_sm_3 ul{
+    display: block;
+  }
+}
+.notification{
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+}

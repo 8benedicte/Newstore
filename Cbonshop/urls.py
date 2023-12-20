@@ -16,14 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from store.views import index,ProductListView,CategoryListviews,SubCategoryListviews,ProductPackListviews,packproductindex,product_detail, about_us
+from store.views import index,ProductListView,CategoryListviews,SubCategoryListviews,ProductPackListviews,packproductindex,product_detail, about_us,error_404_view
 from accounts.views import signup,cart,login_user,empty_cart,delete_cart,logout_user,add_to_cart
 from Cbonshop import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-
+handler404 = error_404_view
 
 
 urlpatterns = [     
@@ -37,6 +37,7 @@ urlpatterns = [
     path('pack_list_detail/<int:id>/',ProductPackListviews.as_view(), name="pack_list_detail"), 
     path('subcategory/<int:id>/', SubCategoryListviews.as_view(),name='subcategory'),     
     path('categories/<int:id>/', CategoryListviews.as_view(), name='category_list'), 
+    path('add-to-cart/<slug:slug>/', add_to_cart, name='add_to_cart'),
     path('product/<int:id>/',product_detail, name="product"),     
     path('product/<int:id>/add_to_cart/',add_to_cart, name="add_to_cart"), 
     path('signup/', signup,name='signup'),     

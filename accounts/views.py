@@ -63,7 +63,7 @@ def add_to_cart(request,slug):
     
     if created:
         cart.orders.add(order)
-
+        messages.success(request, "Produit ajouter avec succes")
     else:
         order.quantity += 1
         order.save()
