@@ -651,7 +651,7 @@ section h1{
 .column_2{
   color: #000000;
   text-decoration: none;
-  padding-left:30px;
+  padding-left:20px;
   width: 400px;
   height: 200px;
 }
@@ -683,8 +683,51 @@ section h1{
 @media  (max-width : 700px) {
   .column{
     display: block;
+    height: fit-content;
     justify-content: center;
   }
+  .column_ {
+
+    padding-left:20px;
+
+  }
+  .column_ a::after{
+    color: #000000;
+    text-decoration: none;
+    content: attr(data-replace);
+    font-size: 1em;
+    top:0;    
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    transform-origin: 100% 50%;
+    transform: translate3d(0,200%,0);
+  }  
+  
+  .column_a:hover::before,
+  .column_a:focus::before {
+  transform-origin: 0% 50%;
+  text-decoration: none;
+  transform: scaleX(1);
+}
+
+.column_ a:hover::after,
+.column_ a:focus::after{
+  transform: translate3d(0,0,0);
+  text-decoration: none;
+
+}
+
+.column_ a i {
+  color: #000000;
+  text-decoration: none;
+  font-size: 2em;
+  display: inline-block;
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.column_ a:hover i {
+  color: #000000;
+  text-decoration: none;
+  transform: translate3d(0, 200%, 0);
+}
 
 } 
 
