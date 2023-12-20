@@ -19,9 +19,14 @@ body{
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
   background-color: #eff2f1;
- 
-}
 
+}
+@media  (max-width : 400px) {
+    body{
+        width:23rem;
+    }
+
+}
 
 /* navbar */
 .sidebar-nav {
@@ -63,17 +68,17 @@ body{
 
 .col-sm-2 ul {
   left: 0;
-  right: 0;  
+  right: 0;
   font-weight: 500;
   display: flex;
   align-items: center;
   z-index: 100;
 }
-.logo{  
+.logo{
     background-image: url("/static/store/image/logo_cbonfond(1).jpg");
     width: 150px; /* ajustez la largeur selon vos besoins */
-    height: 50px; 
-    margin-right: 10px; 
+    height: 50px;
+    margin-right: 10px;
 
 
 }
@@ -112,7 +117,7 @@ body{
 
 
 .col-sm-2 li a {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: 200;
   text-decoration: none;
   list-style: none;
@@ -153,7 +158,7 @@ body{
 @media  (max-width : 9880px)  {
     .col-sm-2{
         padding: 1.3rem 5%;
-      }  
+      }
 }
 @media  (max-width : 700px) {
 
@@ -188,7 +193,7 @@ body{
     }
     .col-sm-2 li a{
       padding-top:10px;
-    }    
+    }
     #check:checked~.sidebar-nav{
       height: 13.5rem;
       transform: translateY(-1px);
@@ -241,44 +246,10 @@ ul{
   backdrop-filter: blur(0.5px);
 
 }
-.slider .slide:nth-child(1) {
+.slider .slide{
   background-image: url("/static/store/image/christine.jpg");
   animation-delay: 0;
 }
-
-.slider .slide:nth-child(2) {
-  background-image: url("/static/store/image/clavierblue.jpg");
-  animation-delay: -6s;
-}
-
-.slider .slide:nth-child(3) {
-  background-image: url("/static/store/image/skinblue.jpg");
-  animation-delay: -12s;
-}
-
-.slider .slide:nth-child(4) {
-  background-image: url("/static/store/image/coffe2.jpg");
-  animation-delay: -18s;
-}
-
-.slider .slide:nth-child(5) {
-  background-image: url("/static/store/image/mini.jpg");
-  animation-delay: -24s;
-}
-@keyframes slide {
-  0%, 15%, 100% {
-    transform: translateX(0);
-    animation-timing-function: ease;
-  }
-  20% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-  95% {
-    transform: translateX(100%);
-    animation-timing-function: ease;
-  }
- }
 
  .part-two {
   display: block;
@@ -335,7 +306,7 @@ ul{
 .pack-space{
   background-image: url("/static/store/image/panier2.jpg");
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   width: 100vw;
   height: 50vh;
   list-style:none;
@@ -360,7 +331,7 @@ ul{
 
 .pack-space  p{
 
-  position: absolute; 
+  position: absolute;
   text-decoration: none;
   margin-right: auto;
   margin-left: auto;
@@ -427,7 +398,7 @@ ul{
 }
 
 @keyframes deco{
-  
+
 }
 
 /*ctegory lin page*/
@@ -451,12 +422,12 @@ ul{
   position: relative;
   z-index: 2;
   padding-top: 12px;
-  
+
 }
 
 .coll-pro ul{
   margin: 0px 15px 10PX 15px;
-  
+
 }
 .coll-pro a {
   text-decoration: none;
@@ -465,6 +436,7 @@ ul{
 .col_sm_3 ul li:hover{
   transform: scale(1.2);
 }
+
 /*categorylist*/
 #c-heck{
   display: none;
@@ -537,7 +509,7 @@ footer{
 .column{
   list-style:none;
   font-family: 'Roboto', sans-serif;
-  background: #4E70CE; 
+  background: #4E70CE;
   backdrop-filter: blur (8px);
   display: flex;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 29px 29px 0px;
@@ -607,7 +579,7 @@ section h1{
   text-decoration: none;
   content: attr(data-replace);
   font-size: 1em;
-  top:0;    
+  top:0;
   transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
   transform-origin: 100% 50%;
   transform: translate3d(200%,0,0);
@@ -641,7 +613,7 @@ section h1{
 }
 
 .column_1{
-  color: #000000; 
+  color: #000000;
   padding-left:20px;
   padding-top: 0;
   margin-top: 5px;
@@ -651,7 +623,7 @@ section h1{
 .column_2{
   color: #000000;
   text-decoration: none;
-  padding-left:30px;
+  padding-left:20px;
   width: 400px;
   height: 200px;
 }
@@ -671,7 +643,7 @@ section h1{
   width: 400px;
   height: 200px;
 }
-.column_3 a{ 
+.column_3 a{
   text-decoration: none;
   color: #000000;
 
@@ -683,8 +655,30 @@ section h1{
 @media  (max-width : 700px) {
   .column{
     display: block;
+    height: fit-content;
     justify-content: center;
   }
+  .column form{
+      width:110px;
+  }
+  .column_ {
 
-} 
+    padding-left:20px;
+
+  }
+  .column_1{
+      margin-left: 0;
+      padding-left:0;
+  }
+  .col_sm_2{
+   margin-top:15%;
+  }
+  .col_sm_3 ul{
+      display:block;
+  }
+  .col_sm_3{
+    display:block;
+  }
+
+}
 
