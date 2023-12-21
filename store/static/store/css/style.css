@@ -161,7 +161,9 @@ body{
       }
 }
 @media  (max-width : 700px) {
-
+  .col-sm-2{
+    width: 20rem;
+  }
   .icons{
       display: inline-flex;
     }
@@ -174,6 +176,7 @@ body{
     #check:checked~.icons #close {
       display: block;
     }
+
     .col-sm-2 ul{
       display: block;
       top: 100%;
@@ -246,8 +249,13 @@ ul{
   backdrop-filter: blur(0.5px);
 
 }
+<<<<<<< HEAD
 .slider .slide{
   background-image: url("/static/store/image/christine.jpg");
+=======
+.slider .slide {
+  background-image: url("/static/store/image/stem.jpg");
+>>>>>>> ee50f3adaa261e9e6c0c2c891e71533b32142e7b
   animation-delay: 0;
 }
 
@@ -409,7 +417,7 @@ ul{
   height: 100vh;
   position: relative;
   z-index: 1;
- }
+}
 .coll-title{
   border-bottom:1px black solid;
   display: block;
@@ -433,6 +441,7 @@ ul{
   text-decoration: none;
 
 }
+
 .col_sm_3 ul li:hover{
   transform: scale(1.2);
 }
@@ -659,8 +668,13 @@ section h1{
     justify-content: center;
   }
   .column form{
+<<<<<<< HEAD
       width:110px;
   }
+=======
+    width:110px;
+}
+>>>>>>> ee50f3adaa261e9e6c0c2c891e71533b32142e7b
   .column_ {
 
     padding-left:20px;
@@ -681,4 +695,28 @@ section h1{
   }
 
 }
+.col_sm_2{
+  margin-top: 15%;
+}
 
+<<<<<<< HEAD
+=======
+} 
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  /* Add other styles as needed */
+}
+
+/* Media query for max-width 700px */
+@media (max-width: 700px) {
+  .col_sm_3 ul{
+    display: block;
+  }
+}
+.notification{
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+}
+>>>>>>> ee50f3adaa261e9e6c0c2c891e71533b32142e7b
