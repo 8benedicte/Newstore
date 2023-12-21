@@ -157,7 +157,7 @@ body{
 }
 @media  (max-width : 700px) {
   .col-sm-2{
-    width: 20rem;
+    width: 28rem;
   }
   .icons{
       display: inline-flex;
