@@ -385,7 +385,7 @@ ul{
   padding-bottom: 20px;
 }
 .blu{
-  background: rgba(107, 160, 212, 0.2);
+  background: rgba(107, 161, 212, 0.2);
   border: 1px black solid;
   backdrop-filter: blur(0.5px);
   max-width: 100vw;
