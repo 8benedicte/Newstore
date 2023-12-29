@@ -32,25 +32,27 @@
                 {% for category_ in category_on_id %} 
 
                   {% for product in category_.products %}  
-                    <ul>
-                        <li> <a href=" {% url 'product' product.slug %}">
-                            {% if product.thumbnail %}
-                            <img src="{{ product.thumbnail.url }}" alt="{{ product.name }}" style="max-width: 250px; height:200px">
-                          {% else %}
-                            <img src="static\store\image\bluebookhome.jpg" alt="Default Image" style="max-width: 250px; height:200px">
-                            <!-- Replace 'path_to_default_image' with the path to your default image -->
-                          {% endif %}
-                        </a>
-                        </li>
-             
-                        <li>
-                            {{ product.name }} ({{ product.prices }}) Cfa
-                        </li>              
-                        <li>
-                            <a href=" {% url 'product' product.slug %} "> Voir plus</a>
-                        </li>
-
-                    </ul>
+                  <div class="card" style="width: 15rem; margin: 20px;display:block;">
+                    <a href=" {% url 'product' product.slug %}">
+                         {% if product.thumbnail %}
+                                <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
+                         {% else %}
+                                <img src="static\store\image\bluebookhome.jpg" alt="Default Image" >
+                          <!-- Replace 'path_to_default_image' with the path to your default image -->
+                     {% endif %}
+                     </a>
+                        <div class="card-body">
+                                <li>
+                                    {{ product.name }}
+                                </li>
+                                <li>
+                                    Prix :{{ product.prices }} Cfa
+                                </li>
+                                <li>
+                                  <a href=" {% url 'product' product.slug %} "class="btn btn-primary"> Voir plus</a>
+                             </li>
+                            </div>
+                        </div>
                     {% endfor %}
                 {% endfor %}
             </div>

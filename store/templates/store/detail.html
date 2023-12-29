@@ -12,8 +12,8 @@
         <div class="det-desc">
             <div class='first-sec' style="text-transform: uppercase;">
                 <h2 style="text-transform: uppercase;">  {{ product.name }} </h2>
-                <h3>  {% blocktrans %}{{ product.prices }} cfa{% endblocktrans %} </h3>
-                <h3> {% blocktrans %} {{ product.instock }} en stock{% endblocktrans %}</h3>                
+                <h3> {% trans "Prix " %} {{ product.prices }} cfa </h3>
+                <h3> {{ product.instock }} {% trans "En stock" %}</h3>                
             </div>
             <div class='sc-sec'>
                 <p> {{ product.description }} 
@@ -30,7 +30,7 @@
                 {% if user.is_authenticated %}
                 <p class="but">
                     <button type="button" class="btn btn-outline-secondary" class="button" >
-                        <a href="{% url 'add_to_cart'  product.slug %}">{% trans "ajouter au panier" %}</a>
+                        <a href="{% url 'add_to_cart'  product.slug %}">ajouter au panier</a>
                     </button>
                 {% endif %} 
                 <button type="button" class="btn btn-outline-secondary" class="button" style="margin-left: 30px;" >

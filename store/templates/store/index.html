@@ -7,7 +7,32 @@
 <div class="container-part">
    <div class="slider">
        <div class="slide">
-
+         <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="static\store\image\cococblue.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="static\store\image\stem.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="static\store\image\packcadeau.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
        </div>
    </div>
       </div> 
@@ -18,8 +43,8 @@
             <li> 
                {% for product in  category_product.products %}
 
-                  <div class="card" style="width: 18rem; margin: 1rem">
-                     <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 270px;">
+                  <div class="card" style="width: 15rem; margin: 1rem;display:block">
+                     <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px;">
                      <div class="card-body" >
                        <h5 class="card-title">{{ category_product.category.name }}</h5>
                        <p class="card-text">{{product.category.name}}</p>
@@ -31,22 +56,29 @@
          {% endfor %}  
       </ul>
  </div>
-<div class="text-center" style="background-color:#023e8a; color: white; width: 100vw; height: 40vh;
-padding-top: 7vw; list-style:none; text-decoration: none;
-" >
 
-   <h2 class="text-center" style="color: white;">{% trans "Découvrez nos packs produits :" %}
+ <div class="treedeco" style="width: 100vw; height:60vh">
+   <h2 class="text-center" style=" text-align: right;position: absolute;left: 50%;transform: translate(-50%, -50%);color: white; margin-top: 5em;margin-bottom: 0px; width: 50vw">
+      {% trans "Découvrez nos packs produits :" %}
       <a style="text-decoration: none;color: white;" href="{% url 'category_list' 1 %}" >{% trans "Electronics" %}</a>,
       <a style="text-decoration: none;color: white;"  href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>,
       <a href="{% url 'category_list' 3 %}" style="text-decoration: none;color: white;" >{% trans "Alimentation" %}</a>,
       <a href="{% url 'category_list' 4 %}" style="text-decoration: none;color: white;" >{% trans "Education" %}</a>
-   </br>    
-   <button type="button" class="btn btn-secondary" style="font-size: 2rem; background-color :#0077b6; border-style:none">
-      <a style="text-decoration: none;color: white;" href="{% url 'pack_list' %}">{% trans "je découvre" %}</a> 
-   </button> 
-</h2>
-
+      <br>    
+      <button type="button" class="btn btn-secondary" style="font-size: 2rem; background-color: #0077b6; border-style: none;">
+         <a style="text-decoration: none;color: white;" href="{% url 'pack_list' %}">{% trans "je découvre" %}</a> 
+      </button> 
+   </h2>
+   <div class="wave">
+   </div>
+   <div class="wave">
+   </div>
+   <div class="wave">
+   
+   </div>
 </div>
+
+
 
 {% endblock  %} 
 <!--
