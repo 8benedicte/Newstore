@@ -60,11 +60,13 @@ def add_to_cart(request,slug):
     products= get_object_or_404(product, slug=slug )
     cart, _ = Cart.objects.get_or_create(user=user)
     order,created =  Order.objects.get_or_create(user=user , products=products)
+    product_price = products.price
     
     if created:
         cart.orders.add(order)
         messages.success(request, "Produit ajouter avec succes")
     else:
+        cart.total_price += product_price
         order.quantity += 1
         order.save()
 

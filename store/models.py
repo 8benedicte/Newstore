@@ -72,6 +72,7 @@ class Order(models.Model):
     products= models.ForeignKey( product ,on_delete=models.CASCADE, related_name="order")
     quantity= models.IntegerField(default=1)
     ordered = models.BooleanField( default=False)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     #cart = models.ForeignKey ( Cart,on_delete= models.CASCADE)
     def __str__(self):
         return f"{self.products} ({self.user.username})"
@@ -88,6 +89,7 @@ class Cart (models.Model):
     orders = models.ManyToManyField(Order,related_name='carts' )
     ordered= models.BooleanField(default=False)
     ordered_date = models.DateTimeField( blank=True, null=True)
+    
     #products = models.ForeignKey ( product,on_delete=models.CASCADE )
 
     def __str__(self):

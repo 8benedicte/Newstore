@@ -2,34 +2,64 @@
     {% load i18n %}
 
 {% block content %}
+<div class="card">
+      <div class="row">
+          <div class="col-md-8 cart">
+              <div class="title">
+                  <div class="row">
+                      <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                      <div class="col align-self-center text-right text-muted"></div>
+                  </div>
+              </div>    
+              <div class="row border-top border-bottom">
+                  <div class="row main align-items-center">
+                        {% for order in cart.orders.all %}
+                      <div class="col-2"> <img src=" {{ order.products.thumbnail.url }} " alt="{{ orders.products.name }}" style="max-width: 250px" ></div>
+                      <div class="col">
+                          <div class="row text-muted">{{ order.products.name }}</div>
+                      </div>
+                      <div class="col">
+                          <a href="#">-</a><a href="#" class="border">{{ order.quantity }}</a><a href="">+</a>
+                      </div>
+                      <div class="col">cfa;{{ product.prices }} <span class="close">&#10005;</span></div>
+                  </div>
+                  {% endfor %}
+                 
+                      <div class="row">
+                           <div class="col">{{ order.products.name }}</div>
+                              <div class="col text-right">&euro;{{ order.products.price }}</div>
+                      </div>
+            
+            </div>
+              </div>
+              <div class="back-to-shop"><a href="{% url 'product_list' %}">&leftarrow;</a><span class="text-muted">retour</span></div>
+          </div>
+          <div class="col-md-4 summary">
+              <div><h5><b>Summary</b></h5></div>
+              <hr>
+              <div class="row">
+                  <div class="col" style="padding-left:0;">TOTAL</div>
+                  <div class="col text-right">&euro;{{ cart.total_price }}</div>
+              </div>
+              <form>
+                  <p>SHIPPING</p>
+                  <select><option class="text-muted">livraison Standard cfa 1000.00</option></select>
+                  <p>GIVE CODE</p>
+                  <input id="code" placeholder="Enter your code">
+              </form>
+              <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                  <div class="col">TOTAL PRICE</div>
+                  <div class="col text-right">&euro; 137.00</div>
+              </div>
 
-<div class='talk'>
-      <p style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:  rgb(177, 88, 24);font-size: 1cm;">Votre Panier</p>
-</div>
+              <button class="btn">
+                  <a href="">Valider le panier</a></button>
+                  <button class="btn"><a href=" {% url 'delete_cart' %} ">supprimer le panier</a></button>
 
-
-<div class="cart_two" style="">
-      {% if cart.orders.all %}
-      {% for orders in cart.orders.all %}
-      <ul>
-            <li style=" display: flex">
-                  <img src=" {{ orders.products.thumbnail.url }} " alt="{{ orders.products.name }}" style="max-width: 250px" >
-            </li>
-            <li >
-                  <h2> {{ orders.products.name }} </h2>
-                  <p> {{ orders.quantity }} {% trans "dans le panier" %} </p>
-      {% endfor %}
-                  <a href=" {% url 'delete_cart' %} ">{% trans "supprimer le panier" %}</a>
-                  <a href="">{% trans "Valider le panier" %}</a>
-
-            </li>
-      </ul>
-      <!-- when cart is empty show-->     
-{% else %}
-      <h1 style="text-align:center"> {% trans "Your cart is currently empty" %} </h1>
-{% endif %}
-</div>
- 
+          </div>
+      </div>
+      
+  </div>
 
 {% endblock  %} 
 <!--

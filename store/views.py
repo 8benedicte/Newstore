@@ -38,7 +38,9 @@ def error_404_view(request, exception):
 
 def product_detail(request,slug):
         products = get_object_or_404(product, slug=slug ) 
-        context={"product":products}
+        context={"product":products,
+                 "prices" :product.prices
+                 }
         return render (request, "store/detail.html",context ) 
 
 def packproductindex(request):
