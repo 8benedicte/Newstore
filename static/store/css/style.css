@@ -1,4 +1,4 @@
-  *{
+*{
   text-decoration: none;
   margin:0;
   padding: 0;
@@ -176,7 +176,7 @@ body{
       height: 0;
       width: 100%;
       justify-content: space-between;
-      background: rgb( 0,0, .1,.1);
+      background: white;
       backdrop-filter: blur (50px);
       box-shadow: 0 5rem 1rem rgb( 0,0, .1,.1);
       text-align: center;
@@ -195,7 +195,9 @@ body{
       transition: transform 1s ease;
       opacity:1;
     }
-
+    .col-sm-2{
+        width: 25rem;
+    }
 }
 
 /* index */
@@ -225,7 +227,6 @@ ul{
 }
 
 .slider .slide {
-
   position: absolute;
   top: 0;
   left: 0;
@@ -233,52 +234,15 @@ ul{
   height: 100%;
   background-size: cover;
   background-position: center;
-  animation: slide 30s infinite;
-  animation-timing-function: linear;
 }
 .blur{
   background: rgba(118, 203, 214, 0.2);
   backdrop-filter: blur(0.5px);
 
 }
-.slider .slide:nth-child(1) {
-  background-image: url("/static/store/image/christine.jpg");
-  animation-delay: 0;
+.slider .slide {
+  background-image: url("/static/store/image/stem.jpg");
 }
-
-.slider .slide:nth-child(2) {
-  background-image: url("/static/store/image/clavierblue.jpg");
-  animation-delay: -6s;
-}
-
-.slider .slide:nth-child(3) {
-  background-image: url("/static/store/image/skinblue.jpg");
-  animation-delay: -12s;
-}
-
-.slider .slide:nth-child(4) {
-  background-image: url("/static/store/image/coffe2.jpg");
-  animation-delay: -18s;
-}
-
-.slider .slide:nth-child(5) {
-  background-image: url("/static/store/image/mini.jpg");
-  animation-delay: -24s;
-}
-@keyframes slide {
-  0%, 15%, 100% {
-    transform: translateX(0);
-    animation-timing-function: ease;
-  }
-  20% {
-    transform: translateX(-100%);
-    animation-timing-function: step-end;
-  }
-  95% {
-    transform: translateX(100%);
-    animation-timing-function: ease;
-  }
- }
 
  .part-two {
   display: block;
