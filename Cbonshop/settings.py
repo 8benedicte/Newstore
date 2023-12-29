@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-d!0vkt7u0k#wi4j(7cn*1i@ar$-lp$v!sn2!4$w2jx&ip@vnz*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['ben12.pythonanywhere.com','.pythonanywhere.com','localhost', '127.0.0.1','cbonboutik.com']
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'gunicorn',
     'currencies',
     'bootstrap5',
-    
+
 
 ]
 
@@ -64,7 +64,7 @@ ROOT_URLCONF = 'Cbonshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR /'templates'],    
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,6 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'accounts.context_processors.user_context',
+                # Add other context processors if needed
             ],
         },
     },
@@ -115,13 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
 from django.utils.translation import gettext_lazy as _
 LANGUAGE_CODE = 'fr'
 
-LANGUAGES =(     
-    ('fr',_('French')),     
-    ('en',_('English')), 
-    )  
+LANGUAGES =(
+    ('fr',_('French')),
+    ('en',_('English')),
+    )
 
-LOCALE_PATH =(     
-    os.path.join(BASE_DIR,('store/locale/')), 
+LOCALE_PATH =(
+    os.path.join(BASE_DIR,('store/locale/')),
 )
 
 TIME_ZONE = 'UTC'
@@ -134,17 +137,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/' 
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [     
-    os.path.join(BASE_DIR, 'store/static') 
-] 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'store/static')
+]
 
-STATIC_ROOT = BASE_DIR / 'static' 
+STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_URL = "/media/" 
+MEDIA_URL = "/media/"
 
-MEDIA_ROOT = BASE_DIR / "media" 
+MEDIA_ROOT = BASE_DIR / "media"
 
 AUTH_USER_MODEL = "accounts.Shopper"
 # Default primary key field type
