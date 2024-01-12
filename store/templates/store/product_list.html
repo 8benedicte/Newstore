@@ -33,20 +33,19 @@
   
       {% for product in category_product.products %} 
       
-      <div class="card" style="width: 15rem; margin: 20px; display:block">
-        <a href=" {% url 'product' product.slug %}">
+      <div class="card" style="width: 16rem; margin: 20px; display:block" >
              {% if product.thumbnail %}
-                    <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
+                    <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px;padding:0; margin:0;">
              {% else %}
-                    <img src="static\store\image\bluebookhome.jpg" alt="Default Image" style="max-width: 250px; max-height:200px">
+                    <img src="static\store\image\bluebookhome.jpg" alt="Default Image" style="height:200px">
               <!-- Replace 'path_to_default_image' with the path to your default image -->
          {% endif %}
-         </a>
+
             <div class="card-body">
-                    <li>
+                    <li class="card-text" >
                         {{ product.name }}
                     </li>
-                    <li>
+                    <li class="card-text">
                         Prix :{{ product.prices }} Cfa
                     </li>
                     <li>

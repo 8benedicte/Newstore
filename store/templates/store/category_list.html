@@ -2,13 +2,68 @@
     {% load i18n %}
 
 {% block content %}
+    {% if category_id == 2 %}
+        <!-- Ajoutez ici le code HTML et les styles spécifiques à la catégorie avec l'ID 2 -->
+        <div class="special-category-style">
+            {% for categorie in category  %}
+            <div class='coll-title' style="background-image: padding: 10px; text-align: right;position: absolute;left: 50%;transform: translate(-50%, -50%);color:black;font-size: 0.5cm; padding-top:5em;"> 
+                
+                <h1>Catégorie {{ categorie.name }}</h1>   
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter
+                  </button>
+                  <ul class="dropdown-menu">
+                    {% for category_ in category_on_id %} 
+    
+                    {% for subcategori in category_.subcategory %}
+                        <li style='color: #000000; list-style: none; display:block;'>
+                            <a class="dropdown-item" href="{% url 'subcategory' subcategori.id %}" style="text-decoration:none">{{subcategori.name}}</a>
+                        </li> 
+                    {% endfor %} 
+                    {% endfor %}               
+                  </ul>
+    
+            </div> 
+            {% endfor %}
+            <div class='air air1'></div>
+            <div class='air air2'></div>
+            <div class='air air3'></div>
+            <div class='air air4'></div>
+        </div>
 
+        <div class='coll-pro'>
+            {% for category_ in category_on_id %} 
+
+              {% for product in category_.products %}  
+              <div class="card" style="width: 15rem; margin: 20px;display:block;">
+                     {% if product.thumbnail %}
+                            <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px;">
+                     {% else %}
+                            <img src="static\store\image\bluebookhome.jpg" alt="Default Image" >
+                      <!-- Replace 'path_to_default_image' with the path to your default image -->
+                 {% endif %}
+                    <div class="card-body">
+                            <li>
+                                {{ product.name }}
+                            </li>
+                            <li>
+                                Prix :{{ product.prices }} Cfa
+                            </li>
+                            <li>
+                              <a href=" {% url 'product' product.slug %} "class="btn btn-primary"> Voir plus</a>
+                         </li>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% else %}
 
     {% if category_id == category_id %}
     <div class='collection' >
         {% for categorie in category  %}
         <div class='coll-title' style=" padding: 10px; text-align: right;position: absolute;left: 50%;transform: translate(-50%, -50%);color:black;font-size: 0.5cm; padding-top:5em;"> 
-            <h1 >Catégorie {{ categorie.name }}</h1>   
+            <h1>Catégorie {{ categorie.name }}</h1>   
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Filter
               </button>
@@ -32,15 +87,13 @@
                 {% for category_ in category_on_id %} 
 
                   {% for product in category_.products %}  
-                  <div class="card" style="width: 15rem; margin: 20px;display:block;">
-                    <a href=" {% url 'product' product.slug %}">
+                  <div class="card" style="width: 15rem; margin: 20px;display:block;padding:none">
                          {% if product.thumbnail %}
                                 <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
                          {% else %}
                                 <img src="static\store\image\bluebookhome.jpg" alt="Default Image" >
                           <!-- Replace 'path_to_default_image' with the path to your default image -->
                      {% endif %}
-                     </a>
                         <div class="card-body">
                                 <li>
                                     {{ product.name }}
@@ -61,6 +114,7 @@
 {% endif %}
 
 
+{% endif %}
 
 
 

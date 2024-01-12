@@ -16,6 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Montserrat:wght@200&family=Open+Sans:wght@300&family=Playfair+Display:ital@1&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
       <!-- Add additional CSS in static file -->
@@ -26,7 +30,7 @@
   <body>
 
     <div class="container-fluid">
-      <div class="row">        
+      <div class="row" >        
           <div class="col-sm-2">
             {% block sidebar %}
             <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" style=""></h1>
@@ -55,8 +59,12 @@
                   <li><a href=" {% url 'cart' %} ">{% trans "Panier" %}</a></li>
                       {% else %} 
                   <!--do something for anonymous user-->
-                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a></li>
-                      <li class="last"><a href=" {% url 'login' %} ">Login</a></li>
+                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                      <li class="last">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
+                          <a href=" {% url 'login' %} ">Login</a>
+                        </button>
+                      </li>
               {% endif %}
               </ul>
             {% endblock %}
@@ -79,17 +87,17 @@
           <h1> {{LANGUAGE_CODE}} </h1>
           <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
             <input name="next" type="hidden" value="{{ redirect_to }}" / >
-            <select name="language" class="form-select" id="inputGroupSelect01">
+            <select name="language" class="form-select" id="inputGroupSelect01" style="width:6rem">
                 {% get_current_language as LANGUAGE_CODE %}
                 {% get_available_languages as LANGUAGES %}
                 {% get_language_info_list for LANGUAGES as languages %}
                 {% for language in languages %}
-                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}  selected="selected"{% endif %}>
                         {{ language.name_local }} ({{ language.code }})
                     </option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Go" class="btn btn-primary"/>
+            <input style="width:3.5rem" type="submit" value="Go" class="btn btn-primary"/>
         </form>
           <div class="column_" style="display:flex;">
             <a href="" data-replace="instagram" data-bs-toggle="modal" data-bs-target="#customModal"><i class="fa-brands fa-instagram" class="yogurt"style='colors: #000000'></i></a>
@@ -127,17 +135,6 @@
 </html>
 
 
-<!-- and at the end:-->
-<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-{% if messages %}
-  <script>
-      {% for message in messages %}
-          $(document).ready(function () {
-              $('.toast').toast('show');
-          });
-      {% endfor %}
-  </script>
-{% endif %}
+
 
 
