@@ -30,7 +30,6 @@ urlpatterns =[
     path("__debug__/", include("debug_toolbar.urls")),
     path('i18n/', include('django.conf.urls.i18n')),
     path('about/', about_us,name='about'),
-    path('admin/', admin.site.urls),
     path('',index,name='index'),
     path('product_list/',ProductListView.as_view(),name="product_list"),
     path('pack_list_detail/<int:id>/',ProductPackListviews.as_view(), name="pack_list_detail"),
