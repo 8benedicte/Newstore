@@ -39,22 +39,29 @@
             </label>
             <ul class="sidebar-nav">
                 <li><a href="{% url 'index' %}" >Home</a></li>
-                <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}">{% trans "Produits" %}</a>
+                <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}" >{% trans "Produits" %}</a>
                     <div class="sub-menu"  class="navbar-nav me-auto mb-2 mb-lg-0">
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'category_list' 1 %}" >{% trans "Electroniques" %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'category_list' 3 %}" >{% trans "Alimentation" %}</a></li>
-                        <li><a class="dropdown-item" href="{% url 'category_list' 4 %}" >{% trans "Education" %}</a></li>
+                        <li class="">
+                          <a class="dropdown-item" href="{% url 'category_list' 1 %}" >{% trans "Electroniques" %}</a>
+                          <div class="sub-menu"  class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <ul class="dropdown-menu">
+                              <li class="va-viens">
+                                <a href="#" >#</a>
+                        </li>
+                        </ul>
+                      </div>
+                        </li>
+                        <li class="">
+                          <a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>
+                        </li>
                       </ul>
-                    </div>
-                </li>
-                <li ><a href="{% url 'pack_list' %}">{% trans "Nos packs" %}</a></li>
+                  </div>
+
                 <li ><a href="{% url 'about' %}">{% trans "A Propos" %}</a></li>
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
-                  <li><a href=" {% url 'cart' %} ">{% trans "Panier" %}</a></li>
                       {% else %} 
                   <!--do something for anonymous user-->
                       <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
@@ -63,6 +70,7 @@
                           <a href=" {% url 'login' %} ">Login</a>
                         </button>
                       </li>
+                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
               {% endif %}
               </ul>
             {% endblock %}
@@ -120,8 +128,8 @@
       <section class="column_3">
         <div>
           <h1>{% trans "liens" %}</h1>
-          <button type="button" class="btn btn-success">
-            <a href="https://pagelink.gozem.co/zxo8" >Gozem</a>  
+          <button type="button" class="btn btn-success" style='color: white'>
+            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>  
           </button>           
         </div></br>
         <a href="{% url "about" %}" style='color: #000000'> {% trans "Aide " %}</a>

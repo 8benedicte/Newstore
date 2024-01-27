@@ -31,6 +31,7 @@ body{
   justify-content: end;
   height: 100%;
   width: 100%;
+  font-weight: 200;
   color:#000000;
 
   }
@@ -63,7 +64,7 @@ body{
 
 .col-sm-2 ul {
   left: 0;
-
+  background-color: white;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -128,15 +129,21 @@ body{
 }
 
  /*-*/
-
+.dropdown-menu .va-viens{
+  display: none;
+}
  /*product category showing on hover*/
  .sub-menu ul {
   display: none;
+
  }
+
  .col-sm-2 li:hover .sub-menu ul{
   display: block;
   width: fit-content;
   left: 40%;
+  font-weight: 200;
+
 }
 
  .col-sm-2 li:hover .sub-menu ul li{
@@ -177,21 +184,10 @@ body{
       top: 100%;
       left: 0;
       height: 0;
-      width: 100%;
+      width: fit-content;
+      margin: auto;
       justify-content: space-between;
-<<<<<<< HEAD
-<<<<<<< HEAD
-      background: white;
-=======
-<<<<<<< HEAD
-      background: rgba(224, 208, 208, 0.829);
-=======
-      background: rgb( 0,0, .1,.1);
->>>>>>> 233b6050977661cc3795f78632c1f95305a8b43f
->>>>>>> d32d020e930d2d17cf960ab0ac2c5907e72f529f
-=======
-      background: rgba(224, 208, 208, 0.829);
->>>>>>> 084c7ae5d6dd8ea148f619263726ef0029f84774
+      background: rgba(184, 236, 225, 0.884);
       backdrop-filter: blur (50px);
       box-shadow: 0 5rem 1rem rgb( 0,0, .1,.1);
       text-align: center;
@@ -205,7 +201,7 @@ body{
       padding-top:10px;
     }    
     #check:checked~.sidebar-nav{
-      height: 13.5rem;
+      height: 15rem;
       transform: translateY(-1px);
       transition: transform 1s ease;
       opacity:1;
@@ -235,89 +231,26 @@ ul{
 .slider {
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
   position: relative;
   overflow-x: hidden;
 
 }
 
 .slider .slide {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 233b6050977661cc3795f78632c1f95305a8b43f
->>>>>>> d32d020e930d2d17cf960ab0ac2c5907e72f529f
-=======
->>>>>>> 084c7ae5d6dd8ea148f619263726ef0029f84774
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-position: center;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
-  animation: slide 30s infinite;
-  animation-timing-function: linear;
->>>>>>> 233b6050977661cc3795f78632c1f95305a8b43f
->>>>>>> d32d020e930d2d17cf960ab0ac2c5907e72f529f
-=======
->>>>>>> 084c7ae5d6dd8ea148f619263726ef0029f84774
 }
 .blur{
   background: rgba(118, 203, 214, 0.2);
   backdrop-filter: blur(0.5px);
 
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.slider .slide {
-  background-image: url("/static/store/image/stem.jpg");
-=======
-<<<<<<< HEAD
-.slider .slide {
 
-  animation-delay: 0;
-}
-
-=======
-.slider .slide:nth-child(1) {
-  background-image: url("/static/store/image/christine.jpg");
-  animation-delay: 0;
-}
-
-.slider .slide:nth-child(2) {
-  background-image: url("/static/store/image/clavierblue.jpg");
-  animation-delay: -6s;
-}
-
-.slider .slide:nth-child(3) {
-  background-image: url("/static/store/image/skinblue.jpg");
-  animation-delay: -12s;
-}
-
-.slider .slide:nth-child(4) {
-  background-image: url("/static/store/image/coffe2.jpg");
-  animation-delay: -18s;
-}
-
-.slider .slide:nth-child(5) {
-  background-image: url("/static/store/image/mini.jpg");
-  animation-delay: -24s;
->>>>>>> d32d020e930d2d17cf960ab0ac2c5907e72f529f
-}
-=======
->>>>>>> 084c7ae5d6dd8ea148f619263726ef0029f84774
-
- .part-two {
+.part-two {
   display: block;
   background-color: #f8f9fb;
   width: 100vw;
@@ -454,6 +387,11 @@ ul{
   text-decoration: none;
   color: #000000;
   padding-bottom: 20px;
+}
+
+.carousel-inner{
+  height: 100%;
+  bottom: 0%;
 }
 .blu{
   background: rgba(107, 160, 212, 0.2);
@@ -789,6 +727,10 @@ section h1{
 .column_3 a{
   text-decoration: none;
   color: #000000;
+
+}
+.column_3 button{
+  color:white;
 
 }
 .column_ a{
