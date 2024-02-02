@@ -50,10 +50,20 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
     <div class="container-fluid" class="navbar-collapse">
       <div class="row" >
           <div class="col-sm-2" style="max-width: 100%;width:100%">
+||||||| ca16bfa
+    <div class="container-fluid">
+      <div class="row" >        
+          <div class="col-sm-2">
+=======
+    <div class="container-fluid">
+      <div class="row" >
+          <div class="col-sm-2">
+>>>>>>> 1adf3fc810497cf7125c2dcf20d18c40605ea4d4
             {% block sidebar %}
             <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" ></h1>
             <input type="checkbox" id='check'>
@@ -100,6 +110,7 @@
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
+<<<<<<< HEAD
                   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
                   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header">
@@ -118,6 +129,35 @@
                       <div class="col">cfa;{{ order.product.prices }} <span class="close">&#10005;</span></div>
                   </div>
                   {% endfor %}
+||||||| ca16bfa
+                      {% else %} 
+                  <!--do something for anonymous user-->
+                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                      <li class="last">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
+                          <a href=" {% url 'login' %} ">Login</a>
+                        </button>
+                      </li>
+                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+              {% endif %}
+              </ul>
+            {% endblock %}
+=======
+                  <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+                      {% else %}
+                  <!--do something for anonymous user-->
+                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                       <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+                      <li class="last">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
+                          <a href=" {% url 'login' %} ">Login</a>
+                        </button>
+                      </li>
+                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+              {% endif %}
+              </ul>
+            {% endblock %}
+>>>>>>> 1adf3fc810497cf7125c2dcf20d18c40605ea4d4
           </div>
           </div>
           <li ><a href="#"></a></li>
@@ -216,10 +256,20 @@
       <section class="column_3">
         <div>
           <h1>{% trans "liens" %}</h1>
+<<<<<<< HEAD
           <button type="button" class="btn btn-success" style='color: white
           background-color: rgb(46, 129, 35)'>
             <a href="https://pagelink.gozem.co/zxo8" style='color: white;' >Gozem</a>
           </button>
+||||||| ca16bfa
+          <button type="button" class="btn btn-success" style='color: white'>
+            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>  
+          </button>           
+=======
+          <button type="button" class="btn btn-success" style='color: white'>
+            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>
+          </button>
+>>>>>>> 1adf3fc810497cf7125c2dcf20d18c40605ea4d4
         </div></br>
         <a href="{% url "about" %}" style='color: #000000'> {% trans "Aide " %}</a>
       </section>
