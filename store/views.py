@@ -36,10 +36,12 @@ def index (request):
 def error_404_view(request, exception):
     return render(request, 'message.html', {})
 
+
 def product_detail(request,slug):
         products = get_object_or_404(product, slug=slug ) 
         context={"product":products,
-                 "prices" :product.prices
+                 "prices" :product.prices,
+                 "discount_price":product.discount_price
                  }
         return render (request, "store/detail.html",context ) 
 

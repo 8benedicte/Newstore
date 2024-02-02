@@ -1,26 +1,41 @@
 {% extends 'base.html' %} 
 
  {% block content %}
- <div class='talk' >
-   <div class='firsto'></div>
-   <div class= 'twoo' style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:black; padding:10px">
-    <h1>Connexion</h1>
-    <form method="POST">
-         {% csrf_token %}
-         <p>
-            <label for="username">Nom d'utilisateur</label>
-            <input id="username" type="text" name="username">
-         </p>
-         <p>
-            <label for="password">Mot de passe</label>
-            <input id="password" type="password" name="password">
+ <div class='form-control' style="background:#6588d3b2 ;width:100vw;left:50%" >
+  <form method="POST" action="" style="display: inline-block; justify-content: center;margin-top: 3em">
+    {% csrf_token %}
+       <div class='you2' style= " margin-right:auto;margin-left: auto;padding:30px; font-size: 1.5em; margin-top : 3em" >
+        <div class="form-floating mb-3" style= 'margin-left: 500;'>
+          {% if form.errors%}
+             <p>there was an error with your form...</p>
+          {% endif %}  
+         <h1 > Connexion</h1>
+         <form method="POST">
+          {% csrf_token %}
+          <p>
+             <label for="username">Nom d'utilisateur</label>
+             <input id="username" type="text" name="username">
+          </p>
+          <p>
+             <label for="password">Mot de passe</label>
+             <input id="password" type="password" name="password">
+       
+          </p> 
+          <p>No account?</p>
+          <button type="submit"type="button" class="btn btn-primary">Connexion</button>
+     </form>
+  
+ 
+
       
-         </p> 
-         <button type="submit"type="button" class="btn btn-primary">Connexion</button>
-    </form>
-   </div>
-</div>
-</div>
+  
+        </div>
+
+      </form>
+     </div>
+ 
+
+
  {% endblock content %}
  
  

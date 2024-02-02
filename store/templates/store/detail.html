@@ -2,6 +2,9 @@
 
 {% block content%}
 {% load i18n %}
+{% load bootstrap5 %}
+{% load static %}
+{% bootstrap_javascript %}
 
 <div class="pro-det" style=" display: block; height: 120vh">
     <div class="pro-det2" style=" display:flex; " >
@@ -13,11 +16,13 @@
             <div class='first-sec' style="text-transform: uppercase;">
                 <h2 style="text-transform: uppercase;">  {{ product.name }} </h2>
                 <h3> {% trans "Prix " %} {{ product.prices }} cfa </h3>
+                {% if product.discount_price %}
+                <h6> <span style="text-decoration: line-through;">{{ product.discount_price }} cfa</span></h6>
+                {% endif %}
                 <h3> {{ product.instock }} {% trans "En stock" %}</h3>                
             </div>
             <div class='sc-sec'>
-                <p> {{ product.description }} 
-</p>
+                <p> {{ product.description }} </p>
             <br>
             </br>
 
@@ -32,6 +37,11 @@
                     <button type="button" class="btn btn-outline-secondary" class="button" >
                         <a href="{% url 'add_to_cart'  product.slug %}">ajouter au panier</a>
                     </button>
+                {% else %}
+                <button type="button" class="btn btn-outline-secondary" class="button" >
+                    <a href="{% url 'add_to_cart'  product.slug %}">ajouter au panier</a>
+                </button>
+                
                 {% endif %} 
                 <button type="button" class="btn btn-outline-secondary" class="button" style="margin-left: 30px;" >
                     <a href="https://api.whatsapp.com/send?phone=22893061107">{% trans "valider par WhatsApp" %}</a>
@@ -46,10 +56,6 @@
 
     </div>
 </div>
-
-
-
-
 
 {% endblock %}
 

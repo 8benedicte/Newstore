@@ -9,77 +9,165 @@
     {% block title %}
       <title>la boutique cbon</title>
     {% endblock %}
-    
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="http://example.com/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-    <link
-    rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+      <!-- Add additional bootstrap5 in static file -->
+      <!-- Add additional fonts in static file -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Montserrat:wght@200&family=Open+Sans:wght@300&family=Playfair+Display:ital@1&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
       <!-- Add additional CSS in static file -->
     <link rel="stylesheet"  href="{% static 'store/css/style.css' %}" type="text/css" />
-    <script src="https://kit.fontawesome.com/fe9fe601dc.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
       <!-- Add additional JS in static file -->
-  </head>
+      <script src="{% static "store/js/app.js" %}"  type="text/javascript"></script>
+      <script src="https://kit.fontawesome.com/fe9fe601dc.js" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    </head>
   <body>
+    {% if messages %}
+    <div class="alert alert-primary" role="alert" style="width:90vw;">
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endif %}
+    <!-- Popup -->
+      <div class="popup" id="popup">
+        <div class="popup-content" style="">
+            <span class="close" style=" font-size:2rem" onclick="closePopup()">&times;</span>
+            <h2>Bienvenue sur notre site !</h2>
+            <h5>Plus qu'un shopping c'est un lifestyle</h5>
+            <p>Inscrit toi pour recevoir toute nos nouveaux produits et profiter du panier</p>
+            <button type="button" class="btn btn-primary" ><a href=" {% url 'signup' %} " style="color:#fff">{% trans "S'inscrire" %}</a></button>
+        </div>
+    </div>
 
-    <div class="container-fluid">
-      <div class="row" >        
-          <div class="col-sm-2">
+
+    <div class="container-fluid" class="navbar-collapse">
+      <div class="row" >
+          <div class="col-sm-2" style="max-width: 100%;width:100%">
             {% block sidebar %}
-            <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" style=""></h1>
+            <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" ></h1>
             <input type="checkbox" id='check'>
             <label for="check" class="icons">
                 <i class="fa-solid fa-bars "  id="menu"></i>
                 <i class="fa fa-times" aria-hidden="true"  id="close"></i>
             </label>
-            <ul class="sidebar-nav">
-                <li><a href="{% url 'index' %}" >Home</a></li>
+          
+            <ul class="sidebar-nav" style="margin-left:auto;margin-right:auto;">
+                <li ><a href="{% url 'index' %}" >Home</a></li>
                 <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}" >{% trans "Produits" %}</a>
                     <div class="sub-menu"  class="navbar-nav me-auto mb-2 mb-lg-0">
                       <ul class="dropdown-menu">
-                        <li class="">
+                        <li class="drop_but">
                           <a class="dropdown-item" href="{% url 'category_list' 1 %}" >{% trans "Electroniques" %}</a>
-                          <div class="sub-menu"  class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <ul class="dropdown-menu">
-                              <li class="va-viens">
-                                <a href="#" >#</a>
-                        </li>
-                        </ul>
-                      </div>
-                        </li>
-                        <li class="">
+                          <div class="dropshow" >
+                            <ul class="dropdown-menu" id="dropshow" class="drop_show" >
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 1 %}">{% trans "Ecouteur" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 3 %}">{% trans "Manette" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 4 %}" >{% trans "jeux" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 5 %}">{% trans "Telephone" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 6 %}">{% trans "Souris/Clavier" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 7 %}" >{% trans "Chargeur" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 8 %}" >{% trans "Memoire/Usb" %}</a></li>
+                            </ul>
+                          </div>
+                        </li>       
+                         <li class="drop_but">
                           <a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>
+                          <div class="dropshow" style="background-color:#fff">
+                            <ul class="dropdown-menu" id="dropshow" class="drop_show" style="background-color:#fff">
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 2 %}">  {% trans "Savon" %} </a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 9 %}">{% trans "Peau" %}</a></li>
+                              <li><a class="dropdown-item" href="{% url 'subcategory' 10 %}" >{% trans "Cheveux" %}</a></li>
+                            </ul>
+                          </div>
                         </li>
                       </ul>
-                  </div>
+                    
+                    </div>
+                  
 
-                <li ><a href="{% url 'about' %}">{% trans "A Propos" %}</a></li>
+                <li ><a href="{% url 'about' %}">{% trans "Nos promos" %}</a></li>
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
-                      {% else %} 
-                  <!--do something for anonymous user-->
-                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
-                      <li class="last">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
-                          <a href=" {% url 'login' %} ">Login</a>
-                        </button>
-                      </li>
-                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
-              {% endif %}
-              </ul>
-            {% endblock %}
+                  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasRightLabel">Votre panier</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      {% for order in cart.orders.all %}
+                      <div class="col-2"> <img src=" {{ order.products.thumbnail.url }} " alt="{{ order.products.name }}" style="max-width: 250px" ></div>
+                      <div class="col">
+                          <div class="row text-muted">{{ order.products.name }}</div>
+                      </div>
+                      <div class="col">
+                          <a href="#">-</a><a href="#" class="border">{{ order.quantity }}</a><a href="">+</a>
+                      </div>
+                      <div class="col">cfa;{{ order.product.prices }} <span class="close">&#10005;</span></div>
+                  </div>
+                  {% endfor %}
           </div>
-     </div>
-    </div>
+          </div>
+          <li ><a href="#"></a></li>
+          <li ><a href="#"></a></li>
+
+          {% else %}
+  <!--do something for anonymous user-->
+                  <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasRightLabel">Votre panier</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      {% for order in cart.orders.all %}
+                      <div class="col-2"> <img src=" {{ order.products.thumbnail.url }} " alt="{{ order.products.name }}" style="max-width: 250px" ></div>
+                      <div class="col">
+                        <div class="row text-muted">{{ order.products.name }}</div>
+                      </div>
+                      <div class="col">cfa;{{ order.product.prices }} <span class="close">&#10005;</span></div>
+                       </div>
+                       {% endfor %}
+            </div>
+          </div>
+           <li class="last">
+            <button id='open' class="btn btn-primary"><a href=" {% url 'login' %} ">{% trans "connexion" %}</a></button>
+           </li>
+         
+        </div>
+      {% endif %}
+      </ul>
+  {% endblock %}
+</div>
+</div>
+</div>
+
+
+<div id="liveAlertPlaceholder" style="margin-top: 2rem">
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+{% endif %}
+</div>
      {% block content %}
         {% endblock %}
- 
+
      </body>
 
 
@@ -112,7 +200,7 @@
             <a href="https://maps.app.goo.gl/vdjLA1tCev3GqLVt6" data-replace="Maps"style='colors: #000000'><i class="fa-solid fa-location-dot"class="yogurt"></i></a>
           </div>
       </section>
-         
+
 
         <section class="column_2" >
           <div>
@@ -128,9 +216,10 @@
       <section class="column_3">
         <div>
           <h1>{% trans "liens" %}</h1>
-          <button type="button" class="btn btn-success" style='color: white'>
-            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>  
-          </button>           
+          <button type="button" class="btn btn-success" style='color: white
+          background-color: rgb(46, 129, 35)'>
+            <a href="https://pagelink.gozem.co/zxo8" style='color: white;' >Gozem</a>
+          </button>
         </div></br>
         <a href="{% url "about" %}" style='color: #000000'> {% trans "Aide " %}</a>
       </section>
@@ -140,7 +229,43 @@
   </foot>
 </html>
 
+{% block extrascripts %}
+<script  src="{%  static 'store/js/app.js' %}" type="text/JavaScript"></script>
+<script>
+// JavaScript
+function showPopup() {
+  document.getElementById("popup").style.display = "block";
+  document.body.classList.add('popup-open'); // Ajoute la classe 'popup-open' au body
+}
 
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+  document.body.classList.remove('popup-open'); // Supprime la classe 'popup-open' du body
+  window.removeEventListener('click', preventClick); // Supprime l'écouteur d'événement sur le clic une fois le popup fermé
+
+  // Enregistre l'état du popup comme fermé dans un cookie expirant à la fin de la session
+  document.cookie = "popupClosed=true; expires=session";
+}
+
+function preventClick(event) {
+  if (!document.getElementById('popup').contains(event.target)) {
+      event.stopPropagation(); // Empêche la propagation du clic en dehors du popup
+  }
+}
+
+window.addEventListener('click', preventClick); // Ajoute un écouteur d'événement sur le clic pour empêcher la propagation du clic en dehors du popup
+
+// Vérifie si le popup a été fermé précédemment
+window.onload = function() {
+  if (document.cookie.indexOf("popupClosed=true") !== -1) {
+      closePopup(); // Ferme le popup si son état précédent était fermé
+  } else {
+      showPopup(); // Affiche le popup s'il n'a pas été fermé précédemment
+  }
+};
+
+</script>
+{% endblock %}
 
 
 

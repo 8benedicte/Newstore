@@ -37,6 +37,7 @@ urlpatterns =[
     path('subcategory/<int:id>/', SubCategoryListviews.as_view(),name='subcategory'),
     path('categories/<int:id>/', CategoryListviews.as_view(), name='category_list'),
     path('product/<int:id>/',product_detail, name="product"),
+    path('product/<slug:slug>/', product_detail, name='product_detail'),
     path('product/<int:id>/add_to_cart/',add_to_cart, name="add_to_cart"),
     path('signup/', signup,name='signup'),
     path('add-to-cart/<slug:slug>/', add_to_cart, name='add_to_cart'),
