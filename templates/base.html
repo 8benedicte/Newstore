@@ -9,7 +9,7 @@
     {% block title %}
       <title>la boutique cbon</title>
     {% endblock %}
-    
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="http://example.com/favicon.ico">
@@ -28,7 +28,7 @@
   <body>
 
     <div class="container-fluid">
-      <div class="row" >        
+      <div class="row" >
           <div class="col-sm-2">
             {% block sidebar %}
             <h1 class='logo'> <img src="{% static 'store/image/logo_cbonfond(1).png' %} " alt="logo" style=""></h1>
@@ -62,9 +62,11 @@
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
-                      {% else %} 
+                  <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+                      {% else %}
                   <!--do something for anonymous user-->
                       <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                       <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
                       <li class="last">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
                           <a href=" {% url 'login' %} ">Login</a>
@@ -79,7 +81,7 @@
     </div>
      {% block content %}
         {% endblock %}
- 
+
      </body>
 
 
@@ -112,7 +114,7 @@
             <a href="https://maps.app.goo.gl/vdjLA1tCev3GqLVt6" data-replace="Maps"style='colors: #000000'><i class="fa-solid fa-location-dot"class="yogurt"></i></a>
           </div>
       </section>
-         
+
 
         <section class="column_2" >
           <div>
@@ -129,8 +131,8 @@
         <div>
           <h1>{% trans "liens" %}</h1>
           <button type="button" class="btn btn-success" style='color: white'>
-            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>  
-          </button>           
+            <a href="https://pagelink.gozem.co/zxo8" style='color: white' >Gozem</a>
+          </button>
         </div></br>
         <a href="{% url "about" %}" style='color: #000000'> {% trans "Aide " %}</a>
       </section>
