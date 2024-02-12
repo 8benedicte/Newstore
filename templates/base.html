@@ -54,7 +54,7 @@
                 <i class="fa-solid fa-bars "  id="menu"></i>
                 <i class="fa fa-times" aria-hidden="true"  id="close"></i>
             </label>
-          
+
             <ul class="sidebar-nav" style="margin-left:auto;margin-right:auto;">
                 <li ><a href="{% url 'index' %}" >Home</a></li>
                 <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}" >{% trans "Produits" %}</a>
@@ -73,7 +73,7 @@
                               <li><a class="dropdown-item" href="{% url 'subcategory' 8 %}" >{% trans "Memoire/Usb" %}</a></li>
                             </ul>
                           </div>
-                        </li>       
+                        </li>
                          <li class="drop_but">
                           <a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>
                           <div class="dropshow" style="background-color:#fff">
@@ -85,13 +85,73 @@
                           </div>
                         </li>
                       </ul>
-                    
+
                     </div>
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> eed76cc121dc1d45d928504d9f31418f0b2fa45d
                 <li ><a href="{% url 'about' %}">{% trans "Nos promos" %}</a></li>
 
                 {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
+<<<<<<< HEAD
+                   <li ><a href="#"></a></li>
+                    <li ><a href="#"></a></li>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <li ><a href="#"></a></li>
+                    <li ><a href="#"></a></li>
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasRightLabel">Votre panier</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      {% for order in cart.orders.all %}
+                      <div class="col-2"> <img src=" {{ order.products.thumbnail.url }} " alt="{{ order.products.name }}" style="max-width: 250px" ></div>
+                      <div class="col">
+                          <div class="row text-muted">{{ order.products.name }}</div>
+                      </div>
+                      <div class="col">
+                          <a href="#">-</a><a href="#" class="border">{{ order.quantity }}</a><a href="">+</a>
+                      </div>
+                      <div class="col">cfa;{{ order.product.prices }} <span class="close">&#10005;</span></div>
+                  </div>
+                  {% endfor %}
+                  <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+                      {% else %}
+
+  <!--do something for anonymous user-->
+                  <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasRightLabel">Votre panier</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                      {% for order in cart.orders.all %}
+                      <div class="col-2"> <img src=" {{ order.products.thumbnail.url }} " alt="{{ order.products.name }}" style="max-width: 250px" ></div>
+                      <div class="col">
+                        <div class="row text-muted">{{ order.products.name }}</div>
+                      </div>
+                      <div class="col">cfa;{{ order.product.prices }} <span class="close">&#10005;</span></div>
+                       </div>
+                       {% endfor %}
+            </div>
+          </div>
+           <li class="last">
+            <button id='open' class="btn btn-primary"><a href=" {% url 'login' %} ">{% trans "connexion" %}</a></button>
+           </li>
+
+        </div>
+      {% endif %}
+      </ul>
+  {% endblock %}
+=======
                   <li ><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
                   <li ><a href="#"></a></li>
                  
@@ -111,6 +171,7 @@
           </div>
           </div>
 
+>>>>>>> eed76cc121dc1d45d928504d9f31418f0b2fa45d
 </div>
 </div>
 </div>
