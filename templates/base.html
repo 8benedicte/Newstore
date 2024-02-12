@@ -62,7 +62,7 @@
                 <i class="fa-solid fa-bars "  id="menu"></i>
                 <i class="fa fa-times" aria-hidden="true"  id="close"></i>
             </label>
-          
+
             <ul class="sidebar-nav" style="margin-left:auto;margin-right:auto;">
                 <li ><a href="{% url 'index' %}" >Home</a></li>
                 <li id="side" class="nav-link dropdown-toggle" ><a href="{% url 'product_list' %}" >{% trans "Produits" %}</a>
@@ -81,7 +81,7 @@
                               <li><a class="dropdown-item" href="{% url 'subcategory' 8 %}" >{% trans "Memoire/Usb" %}</a></li>
                             </ul>
                           </div>
-                        </li>       
+                        </li>
                          <li class="drop_but">
                           <a class="dropdown-item" href="{% url 'category_list' 2 %}" >{% trans "Cosmetique" %}</a>
                           <div class="dropshow" style="background-color:#fff">
@@ -93,16 +93,20 @@
                           </div>
                         </li>
                       </ul>
-                    
+
                     </div>
-                  
+
 
                 <li ><a href="{% url 'about' %}">{% trans "Nos promos" %}</a></li>
               {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
+                   <li ><a href="#"></a></li>
+                    <li ><a href="#"></a></li>
                   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
                   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <li ><a href="#"></a></li>
+                    <li ><a href="#"></a></li>
                     <div class="offcanvas-header">
                       <h5 class="offcanvas-title" id="offcanvasRightLabel">Votre panier</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -120,25 +124,9 @@
                   </div>
                   {% endfor %}
                   <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
-                      {% else %}
-                  <!--do something for anonymous user-->
-                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
-                       <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
-                      <li class="last">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
-                          <a href=" {% url 'login' %} ">Login</a>
-                        </button>
-                      </li>
-                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
-              {% endif %}
-              </ul>
-            {% endblock %}
-          </div>
-          </div>
-          <li ><a href="#"></a></li>
-          <li ><a href="#"></a></li>
 
-          {% else %}
+                      {% else %}
+
   <!--do something for anonymous user-->
                   <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
                   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
@@ -161,7 +149,7 @@
            <li class="last">
             <button id='open' class="btn btn-primary"><a href=" {% url 'login' %} ">{% trans "connexion" %}</a></button>
            </li>
-         
+
         </div>
       {% endif %}
       </ul>
