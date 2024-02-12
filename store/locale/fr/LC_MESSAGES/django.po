@@ -1334,7 +1334,7 @@ msgstr "Voir mon panier"
 #: .\store\templates\store\cart.html:23
 #| msgid "Voir mon panier"
 msgid "Valider le panier"
-msgstr "Voir mon panier"
+msgstr "Valider mon panier"
 
 #: .\store\templates\store\cart.html:29
 msgid "Your cart is currently empty"
@@ -1370,7 +1370,7 @@ msgstr "si le button n'apparait pas verifier votre connexion"
 #: .\store\templates\store\detail.html:37
 #| msgid "Voir mon panier"
 msgid "ajouter au panier"
-msgstr "Voir mon panier"
+msgstr "ajouter au panier"
 
 #: .\store\templates\store\detail.html:42
 msgid "valider par WhatsApp"
