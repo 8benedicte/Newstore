@@ -12,12 +12,7 @@
   
     <h1 style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:#000000;font-size: 1cm;" > {{ subcategory.name}}
   </h1>  
-  {% for subproduct in sub_link %}
-  {% for product in subproduct.products  %}
-       <h2> {{product.name}} </h2>
-  
-  {% endfor %}
-{% endfor %}
+
 </div>
 
 {% endfor %}

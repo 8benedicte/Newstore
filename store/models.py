@@ -2,7 +2,8 @@ from django.db import models
 from django.urls import reverse
 from Cbonshop.settings import AUTH_USER_MODEL
 from django.utils.translation import gettext_lazy
-
+from django_countries.fields import CountryField
+from django_countries.widgets import CountrySelectWidget
 # Create your models here.
 
 #first app product:
@@ -90,16 +91,16 @@ class Order(models.Model):
         return f"{self.quantity} of {self.products.name}"
 
     def get_total_item_price(self):
-        return self.quantity * self.products.price
+        return self.quantity * self.products.prices
 
     def get_total_discount_item_price(self):
-        return self.quantity * self.item.discount_price
+        return self.quantity * self.products.discount_price
 
     def get_amount_saved(self):
         return self.get_total_item_price() - self.get_total_discount_item_price()
 
     def get_final_price(self):
-        if self.item.discount_price:
+        if self.products.discount_price:
             return self.get_total_discount_item_price()
         return self.get_total_item_price()
  
@@ -124,11 +125,36 @@ class Cart (models.Model):
 
     def get_total(self):
         total = 0
-        for order_item in self.items.all():
+        for order_item in self.orders.all():
             total += order_item.get_final_price()
-        if self.coupon:
-            total -= self.coupon.amount
+
         return total
+    def product_fetch(self):
+        product_list = []
+        for order_item in self.orders.all():
+            product_list.append(order_item.products.name)  # Ajoutez le nom du produit à la liste
+        return ', '.join(product_list) 
+    
     def is_empty(self):
         return self.orders.count() == 0
     
+    
+class CheckoutAddress(models.Model):
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    street_address = models.CharField(max_length=100)
+    apartment_address = models.CharField(max_length=100)
+    country = CountryField(multiple=False)
+    zip = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user.username
+    
+
+class Payment(models.Model):
+    stripe_id = models.CharField(max_length=50)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username

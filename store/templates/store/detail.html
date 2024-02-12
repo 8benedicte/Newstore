@@ -44,7 +44,7 @@
                 
                 {% endif %} 
                 <button type="button" class="btn btn-outline-secondary" class="button" style="margin-left: 30px;" >
-                    <a href="https://api.whatsapp.com/send?phone=22893061107">{% trans "valider par WhatsApp" %}</a>
+                    <a href="{% url "validate_product_via_whatsapp" product.slug %}">{% trans "valider par WhatsApp" %}</a>
                 </button>
             </p>
                 {% if cart %}
