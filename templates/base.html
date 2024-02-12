@@ -30,15 +30,7 @@
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     </head>
   <body>
-    {% if messages %}
-    <div class="alert alert-primary" role="alert" style="width:90vw;">
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    </div>
-{% endif %}
+
     <!-- Popup -->
       <div class="popup" id="popup">
         <div class="popup-content" style="">
@@ -71,7 +63,7 @@
                         <li class="drop_but">
                           <a class="dropdown-item" href="{% url 'category_list' 1 %}" >{% trans "Electroniques" %}</a>
                           <div class="dropshow" >
-                            <ul class="dropdown-menu" id="dropshow" class="drop_show" >
+                            <ul class="dropdown-menu" id="dropshow" class="drop_show" style="  background-color: #eff2f1; opacity:1" >
                               <li><a class="dropdown-item" href="{% url 'subcategory' 1 %}">{% trans "Ecouteur" %}</a></li>
                               <li><a class="dropdown-item" href="{% url 'subcategory' 3 %}">{% trans "Manette" %}</a></li>
                               <li><a class="dropdown-item" href="{% url 'subcategory' 4 %}" >{% trans "jeux" %}</a></li>
@@ -95,12 +87,17 @@
                       </ul>
 
                     </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> eed76cc121dc1d45d928504d9f31418f0b2fa45d
                 <li ><a href="{% url 'about' %}">{% trans "Nos promos" %}</a></li>
-              {% if user.is_authenticated %}
+
+                {% if user.is_authenticated %}
                   <!--do something for authenticated user-->
                   <li><a href=" {% url 'logout' %} ">{% trans "Deconnexion" %}</a></li>
+<<<<<<< HEAD
                    <li ><a href="#"></a></li>
                     <li ><a href="#"></a></li>
                   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
@@ -154,10 +151,39 @@
       {% endif %}
       </ul>
   {% endblock %}
-</div>
-</div>
-</div>
+=======
+                  <li ><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+                  <li ><a href="#"></a></li>
+                 
+                  {% else %}
+                  <!--do something for anonymous user-->
+                      <li><a href=" {% url 'signup' %} ">{% trans "S'inscrire" %}</a>     </li>
+                      <li class="last">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-box:none;">
+                          <a href=" {% url 'login' %} ">Login</a>
+                        </button>
+                      </li>
+                      <li><a href=" {% url 'cart' %} "><i class="fa-solid fa-cart-shopping"></i></a></li>
+              {% endif %}
 
+            </ul>
+            {% endblock %}
+          </div>
+          </div>
+
+>>>>>>> eed76cc121dc1d45d928504d9f31418f0b2fa45d
+</div>
+</div>
+</div>
+{% if messages %}
+<div class="alert alert-primary" role="alert" style="width:90vw;">
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
 
 <div id="liveAlertPlaceholder" style="margin-top: 2rem">
   {% if messages %}

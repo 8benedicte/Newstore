@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'gunicorn',
     'currencies',
     'bootstrap5',
-
+    'django_countries',
 
 ]
 

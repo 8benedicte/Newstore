@@ -37,6 +37,16 @@ def error_404_view(request, exception):
     return render(request, 'message.html', {})
 
 
+def validate_product_via_whatsapp(request, slug):
+    products = get_object_or_404(product, slug=slug)
+    total_price = products.prices if not products.discount_price else products.discount_price
+    
+    # Générer le message WhatsApp avec les détails du produit
+    whatsapp_message = f"Salut, j'aimerais acheter le produit suivant :\nNom: {products.name}\nPrix: {total_price}\n"
+    
+    # Rediriger vers WhatsApp avec le message pré-rempli
+    return redirect(f'https://api.whatsapp.com/send/?phone=22893061107&text={whatsapp_message}')
+
 def product_detail(request,slug):
         products = get_object_or_404(product, slug=slug ) 
         context={"product":products,

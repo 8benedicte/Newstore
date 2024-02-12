@@ -123,6 +123,7 @@ body{
   text-decoration: none;
   list-style: none;
   color: #000000;
+  opacity:1;
 }
 
 /*show the active link*/
@@ -130,7 +131,6 @@ body{
 
 /* Change the link color on hover */
 .col-sm-2 li:hover {
-  opacity: 0.5;
   border-bottom:1px #000000 solid;
 }
 
@@ -259,6 +259,20 @@ body.popup-open {
 /* Restaure les interactions sur l'élément spécifique si nécessaire */
 body.popup-open .element-a-activer {
   pointer-events: auto;
+}
+
+@media (max-width: 700px) {
+  .popup{
+    width: 400px;
+    height: 300px;
+  }
+  .cardy .card-body{
+    color: #000000;
+    bottom: none;
+    top: 5%;
+  
+  }
+
 }
 /* dropshow */
 .dropshow{
