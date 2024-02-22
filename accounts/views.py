@@ -22,7 +22,7 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-    # formulaire d'inscription 
+    # formulaire d'inscription
             username= form.cleaned_data["username"]
             password = form.cleaned_data["password1"]
             #email = form.cleaned_data["email"]
@@ -33,14 +33,14 @@ def signup(request):
             return redirect (_('index'))
     else:
         form= SignUpForm()
-        
+
     return render(request,'account/signup.html',{'form':form})
 
 
 #reconnexion
 def login_user(request):
     if request.method == "POST":
-    # formulaire de connexion 
+    # formulaire de connexion
             username= request.POST["username"]
             password = request.POST["password"]
 
@@ -49,12 +49,13 @@ def login_user(request):
                 login(request, user )
                 return redirect(_('index'))
 
-    return render(request, 'account/login.html') 
-       
+    return render(request, 'account/login.html')
+
 #deconexion
 def logout_user(request):
     logout(request)
     return redirect (_('index'))
+
 
 def add_to_cart(request, slug):
     user = request.user
@@ -62,19 +63,19 @@ def add_to_cart(request, slug):
     cart, created = Cart.objects.get_or_create(user=user, ordered=False)
     order_item, created = Order.objects.get_or_create(user=user, products=products, ordered=False)  # Utilisez product_id au lieu de products
     if request.user.is_authenticated:
-        if created:  
+        if created:
             cart.orders.add(order_item)
             messages.info(request, "Produit ajouté avec succès")
         elif order_item in cart.orders.all():
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "Ce produit est rajouté avec succès.")
-        else:  
+        else:
             cart.orders.add(order_item)
             messages.info(request, "Produit ajouté avec succès")
     else:
         messages.info(request, "Vous devez vous connecter pour voir votre panier.")
-       
+
     return redirect(reverse("product_detail", kwargs={"slug": slug}))
 
 
@@ -125,7 +126,7 @@ def validate_cart_via_whatsapp(request):
 
     # Générer le message WhatsApp avec les détails du panier
     whatsapp_message = f"Salut j'aimerais valider mon panier contenant :\n{products_list}\nd'un total de {totalprice}"
- 
+
     # Rediriger vers WhatsApp avec le message pré-rempli
     return redirect(f'https://api.whatsapp.com/send/?phone=22893061107&text={whatsapp_message}')
 
@@ -141,12 +142,12 @@ class CheckoutView(View):
             "cartitem": cartitems,
             "totalprice": totalprice,
             "products": products,
-            "form": form,  
+            "form": form,
         }
         return render(self.request, 'store/checkout.html', context)
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
-        
+
         try:
             order = Order.objects.filter(user=self.request.user, ordered=False)
             if form.is_valid():
@@ -188,9 +189,9 @@ class CheckoutView(View):
 def checkout(request):
     print("hey i'm here")
     cartitem= Cart.objects.filter(user=request.user)
-    
+
     products =  product.objects.all()
-    
+
     totalprice=0
     for rawcart in cartitem:
      totalprice += rawcart.get_total()
@@ -198,8 +199,8 @@ def checkout(request):
         "cartitem":cartitem,
         "totalprice":totalprice,
         "products":products
-        
-        
+
+
     }
     return render(request, "store/checkout.html", context)
 class CheckoutView(View):
@@ -211,11 +212,11 @@ class CheckoutView(View):
             'form': form,
         }
         return render(self.request, 'store/checkout.html', context)
- 
-  
+
+
   def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
-        
+
         try:
             order = Order.objects.filter(user=self.request.user, ordered=False)
             if form.is_valid():

@@ -1,31 +1,31 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
     {% load i18n %}
 
 {% block content %}
 
 <div class='collection'  >
 
-  
+
     <h1 style="text-align: right;position: absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);color:#000000;font-size: 1cm;" >Nos Produits
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       Filter
     </button>
     <ul class="dropdown-menu">
       <li style='color: #000000; list-style: none; display:block;' >
-        <a class="dropdown-item" style="text-decoration: none;"  href="{% url 'category_list' 1 %}"> Electronics</a> 
+        <a class="dropdown-item" style="text-decoration: none;"  href="{% url 'category_list' 1 %}"> Electronics</a>
       </li>
       <li style='color: #000000; list-style: none; display:block;' >
-        <a class="dropdown-item" style="text-decoration: none;"  href="{% url 'category_list' 2 %}">Cosmetique</a> 
+        <a class="dropdown-item" style="text-decoration: none;"  href="{% url 'category_list' 2 %}">Cosmetique</a>
       </li>
     </ul>
-  </h1>  
+  </h1>
  </div>
   <div class='coll' style='background-color: #d7e3fc;display: flex ;flex-wrap: wrap;'>
-  
-  {% for category_product in category_products %}  
-  
-      {% for product in category_product.products %} 
-      
+
+  {% for category_product in category_products %}
+
+      {% for product in category_product.products %}
+
       <div class="card" style="width: 16rem; margin: 20px; display:block" >
              {% if product.thumbnail %}
                     <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px;padding:0; margin:0;">
@@ -39,28 +39,33 @@
                         {{ product.name }}
                     </li>
                     <li class="card-text">
-                        Prix :{{ product.prices }} Cfa
+                        {% if product.discount_price %}
+                        Prix :{{ product.discount_price }} Cfa
+                        <h6> <span style="text-decoration: line-through;">{{ product.prices }} cfa</span></h6>
+                {% else %}
+                    Prix :{{ product.prices }} Cfa
+                {% endif %}
                     </li>
                     <li>
                       <a href=" {% url 'product' product.slug %} "class="btn btn-primary"> {% trans "Voir plus" %}</a>
-                        
+
 
                  </li>
                 </div>
             </div>
-  
+
       {% endfor %}
-          
+
   {% endfor %}
-  
-  
-  
+
+
+
   </div>
 </div>
 
 </div>
 
 
-    
 
-{% endblock  %} 
+
+{% endblock  %}
