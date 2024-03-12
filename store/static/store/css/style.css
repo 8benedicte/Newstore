@@ -211,8 +211,7 @@ body{
 .container-part{
   display: block;
   width: 100vw;
-  height: 100% ;
-  margin-bottom: 2cm;
+
   margin: 0px;
   border: 1px black solid;
 
@@ -270,7 +269,7 @@ body.popup-open .element-a-activer {
     color: #000000;
     bottom: none;
     top: 5%;
-  
+
   }
 
 }
@@ -329,9 +328,9 @@ ul{
 
 }
 @media  (max-width : 700px){
-  .slider .slide{
+  .slider {
     margin-top: 3em;
-    height: auto;
+    height:50%
   }
   .carousel-inner{
     width: auto;
@@ -454,9 +453,15 @@ ul{
   padding-top:5px;
   justify-content: center;
 }
+
+
+
 @media (max-width: 700px) {
   .responsive-part-two li:not(:first-child) {
     display: none;
+  }
+  .part-two  li:first-child card{
+      width:15rem;
   }
 }
 .pack-space{
@@ -577,7 +582,7 @@ ul{
   position: relative;
   z-index: 2;
   padding-top: 12px;
-  
+
 }
 
 .coll-pro ul{
@@ -816,7 +821,7 @@ section h1{
     height: fit-content;
     justify-content: center;
   }
-  
+
   .column_ {
 
     padding-left:20px;
@@ -884,7 +889,7 @@ section h1{
   border: transparent;
   border-bottom-left-radius: unset;
 
-  
+
 }
 
 
@@ -1005,13 +1010,13 @@ input:focus::-webkit-input-placeholder
   box-shadow: none;
   color: white;
   -webkit-box-shadow: none;
-  transition: none; 
+  transition: none;
 }
 .cart .btn:hover{
   color: white;
 }
 .summary a{
-  color: black; 
+  color: black;
 }
 .summary a:hover{
   color: black;
@@ -1071,25 +1076,25 @@ input:focus::-webkit-input-placeholder
 }
 @keyframes wave{
   0%{
-    background-position-x: 0px; 
+    background-position-x: 0px;
   }
   100%{
-    background-position-x: 1000px; 
+    background-position-x: 1000px;
   }
 }
 @keyframes wave2{
   0%{
-    background-position-x: 0px; 
+    background-position-x: 0px;
   }
   100%{
-    background-position-x: -1000px; 
+    background-position-x: -1000px;
   }
 }
 
 
 .car1{
   display: none;
-  
+
 }
 .cardy:hover{
   .car{
